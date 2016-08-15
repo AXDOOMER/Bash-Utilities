@@ -35,6 +35,7 @@ do
 		sensors | zenity --text-info --width 530 --height=440 --title "Sensors"
 	elif [ "$choice" == "Disk usage" ]
 	then
+		df -h | zenity --text-info --width 550 --height=450 --title "Disk space usage"
 	elif [ "$choice" == "Say Hi!" ]
 	then
 		notify-send -t 5000 -u low -i gtk-dialog-info  "Hi!"
