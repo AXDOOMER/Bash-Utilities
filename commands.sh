@@ -19,7 +19,7 @@ choice="NOTEMPTY"
 
 while [ -n "$choice" ]
 do
-	choice=$(zenity --list --title="Select a command" --height=300 --column="Commands" "List USB devices" "List account information" "Ressources usage" "Temperature" "Say Hi!")
+	choice=$(zenity --list --title="Select a command" --height=300 --column="Commands" "List USB devices" "List account information" "Ressources usage" "Disk usage" "Temperature" "Say Hi!")
 
 	if [ "$choice" == "List USB devices" ]
 	then
@@ -33,6 +33,8 @@ do
 	elif [ "$choice" == "Temperature" ]
 	then
 		sensors | zenity --text-info --width 530 --height=440 --title "Sensors"
+	elif [ "$choice" == "Disk usage" ]
+	then
 	elif [ "$choice" == "Say Hi!" ]
 	then
 		notify-send -t 5000 -u low -i gtk-dialog-info  "Hi!"
