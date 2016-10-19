@@ -1,5 +1,4 @@
 # Copyright (C) Alexandre-Xavier Labonté-Lamoureux
-# Do what the fuck you want with it...
 
 # GNU/LINUX
 uname -msr
