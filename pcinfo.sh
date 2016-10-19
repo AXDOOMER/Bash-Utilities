@@ -3,8 +3,8 @@
 # GNU/LINUX
 uname -msr
 
-# ess /proc/cpuinfo  | grep "@"
-lscpu | grep "@"
+# CPU info
+cat /proc/cpuinfo | head | grep "@"
 
 # RAM
 head -n 1 /proc/meminfo
