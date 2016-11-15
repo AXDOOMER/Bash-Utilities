@@ -10,8 +10,8 @@ elif [ $# -eq 3 ]; then
     cat $1 > $3
     cat $2 >> $3
 else
-    echo "usage: concatenated embedded [copy]>"
-    echo "embedded is the file to be embedded using concatenation into concatenated."
-    echo "if copy is used, then concatenated won't be modified. copy will be used."
-    echo "example: embed image.png archive.rar newimage.png"
+    echo "Usage: destionation source [target]"
+    echo "The source is the file to be embedded using concatenation into the destination."
+    echo "A target can be specified so the destination is not modified. It is optional."
+    echo "Example: embed image.png archive.rar newimage.png"
 fi
