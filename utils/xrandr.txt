@@ -1,0 +1,9 @@
+==============================================
+Change the screen resolution from the terminal
+==============================================
+
+Le moyen le plus facile de changer la résolution d'écran est à partir du 
+terminal. Il faut utiliser la commande "xrandr -s" puis spécifier la résolution.
+
+	xrandr -s 1366x768
+

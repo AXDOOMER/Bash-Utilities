@@ -1,0 +1,7 @@
+===================================
+Trouver le chemin vers un programme
+===================================
+
+	whereis chocolate-doom
+	which chocolate-doom
+

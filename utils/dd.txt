@@ -1,0 +1,17 @@
+=============================================
+Écrire un fichier img ou iso sur une clef USB
+=============================================
+
+Premièrement, il faut unmount le drive sur lequel on veut écrire:
+
+	sudo umount /dev/sdc<?>
+
+Ensuite, on peut écrire l'image dessus dans le drive:
+
+	sudo dd bs=4M if=input.iso of=/dev/sd
+
+Vous pouvez lire plus sur l'utilitaire 'dd' ici: 
+https://en.wikipedia.org/wiki/Dd_(Unix)
+
+
+

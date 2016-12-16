@@ -1,0 +1,18 @@
+=======================================
+Cacher un fichier dans un autre fichier
+=======================================
+
+Son utilisation principale est pour cacher un fichier dans une image. 
+Ça se fait par simple ajout des données à la fin d'un autre fichier. 
+Il y a plusieurs façons de le faire sur *nix, par simple concaténation.
+Voici les commandes à utiliser: 
+
+	cat foo.jpg bar.rar > foobar.jpg
+	cat secret.mp3 >> image.jpg
+
+Windows:  copy /B foo.jpg + bar.rar foobar.jpg
+
+Sources:
+https://encyclopediadramatica.se/Embedded_files
+
+

@@ -1,0 +1,11 @@
+======================================
+Comparer deux fichiers text facilement
+======================================
+
+Il faut executer 'dwdiff', comme dans l'example suivant, où '1' est le vieux 
+fichier et '2' est le nouveau fichier. '-c' ajoute de la couleur et '-s' nous
+donne les statistiques. 
+
+	dwdiff 1 2 -c -s
+
+

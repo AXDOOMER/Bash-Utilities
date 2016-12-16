@@ -1,0 +1,7 @@
+================================================
+Enlever les symboles de débogage des exécutables
+================================================
+
+	strip chocolate-*
+
+

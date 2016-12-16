@@ -1,0 +1,10 @@
+===============================
+Comparer deux fichiers binaires
+===============================
+
+Pour comparer deux fichiers binaires, on utilise 'vbindiff'. Il affiche deux 
+les deux fichiers en même temps pour une comparaison visuelle. 
+
+	vbindiff "Doom 64 v1.0 (USA).z64" "Doom 64 v1.1 (USA).z64" 
+
+
