@@ -4,7 +4,7 @@ choice="NOTEMPTY"
 
 while [ -n "$choice" ]
 do
-	choice=$(zenity --list --title="Select a command" --height=300 --column="Commands" "List USB devices" "List PCI devices" "List account information" "Ressources usage" "Disk usage" "Temperature" "Say Hi!")
+	choice=$(zenity --list --title="Select a command" --height=300 --column="Commands" "List USB devices" "List PCI devices" "List account information" "Ressources usage" "Disk usage" "Temperature" "List open ports" "Say Hi!")
 
 	if [ "$choice" == "List USB devices" ]
 	then
@@ -24,6 +24,9 @@ do
 	elif [ "$choice" == "Disk usage" ]
 	then
 		df -h | zenity --text-info --width 550 --height=450 --font="monospace" --no-wrap --title "Disk space usage"
+	elif [ "$choice" == "List open ports" ]
+	then
+		netstat -tulpn | zenity --text-info --width 900 --height=500 --font="monospace" --no-wrap --title "Open ports"
 	elif [ "$choice" == "Say Hi!" ]
 	then
 		notify-send -t 5000 -u low -i gtk-dialog-info  "Hi!"
