@@ -15,8 +15,7 @@ function Generate
 
 	for i in $(seq 0 $max)
 	do
-		inc=$1
-		Generate $((inc-1)) $2${chars[$i]}
+		Generate $(($1-1)) $2${chars[$i]}
 	done
 }
 
