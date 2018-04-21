@@ -5,6 +5,7 @@
 # The following must be run inside the kernel's source directory before running make:
 # 	make oldconfig && make prepare
 # 	make scripts
+# Run the script with '-init' and it will execute them.
 
 function FindArg()
 {
@@ -20,38 +21,53 @@ function FindArg()
 	done
 }
 
-kerdir="$HOME/Desktop/linux-4.9.94/"    # work directory, where the source code of the kernel is
-kerver=$(uname -r)                      # version of the current kernel
+kerdir="$HOME/Desktop/linux-4.9.94"    # Linux kernel source code directory
+kerver=$(uname -r)                     # Version of the current kernel
+pattern="em28xx*.ko"
+module="drivers/media/usb/em28xx"
 
 echo "Kernel version: $kerver"
 
 cd $kerdir
+
+if [ ! -z $(FindArg "-init" "$@") ]; then
+	make oldconfig && make prepare
+	make scripts
+	echo -e "\nConfig and scripts prepared."
+	exit
+fi
+
 make M=drivers/media/usb/em28xx
 
 if [ ! $? -eq 0 ]; then
-	echo "Make has failed. Script was stopped."
+	echo -e "\nMake has failed. Script was stopped."
 	exit
 fi
 
 echo "Current modules: "
-ls /lib/modules/$kerver/kernel/drivers/media/usb/em28xx/*.ko
+ls /lib/modules/$kerver/kernel/$module/*.ko
 
 echo "New modules: "
-ls $kerdir/drivers/media/usb/em28xx/*.ko
+ls $kerdir/$module/*.ko
 
 # Check to make sure if the user wants to continue at this point
 if [ -z $(FindArg "-dontcare" "$@") ]; then
+	echo
 	read -p "Are you sure you want to continue at this point? " -n 1 -r
 	echo
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		echo "Aborted."
+		echo -e "\nAborted."
 		exit
 	fi
 fi
 
+# Unload any modules
+#sudo modprobe -r em28xx
+#insmod em28xx.ko
+#sudo modprobe em28xx
+
+# Delete old modules and copy the new ones
+sudo rm /lib/modules/$kerver/kernel/$module/$pattern
+sudo cp -f $kerdir/$module/$pattern /lib/modules/$kerver/kernel/$module/
+
 echo "Done!"
-
-#sudo rm /lib/modules/$kerver/kernel/drivers/media/usb/em28xx/em28xx*
-
-#sudo cp -f "~/Desktop/linux-4.9.94/drivers/media/usb/em28xx/em28xx*.ko" "/lib/modules/$kerver/kernel/drivers/media/usb/em28xx/"
-
